@@ -27,7 +27,6 @@
                     <li><a href="cakect"><i class="fa-solid fa-cake-candles"></i> Sản phẩm</a>
                         <ul class="sub-menu">
                             <li><a href="cakect">Bánh ngọt</a></li>
-                            <li><a href="">Nước uống</a></li>
                             <li><a href="product.jsp">Công thức</a></li>
                         </ul>
                     </li>

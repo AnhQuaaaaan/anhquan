@@ -29,7 +29,6 @@
                     <li><a href="cakect"><i class="fa-solid fa-cake-candles"></i> Sản phẩm</a>
                         <ul class="sub-menu">
                             <li><a href="cakect">Bánh ngọt</a></li>
-                            <li><a href="">Nước uống</a></li>
                             <li><a href="product.jsp">Công thức</a></li>
                         </ul>
                     </li>
@@ -89,10 +88,14 @@
                     <div id="text1">Subscribe my newsletter for latest recipes and cooking ideas. Let's stay updated!</div>
                     <div id="give">
                         <div id="from">
-                            <input type="text" id="fname" name="fname" value="Comment..."><br><br>
-                            <input type="text" id="lname" name="lname" value="Email..."><br><br>
+                            <form action="commenttc3" method="post">
+				                <h2>Email</h2>
+				                <input name="email" type="text" class="input-signup-username" />
+				                <h2>Comment</h2>
+				                <input name="comment" type="text" class="input-signup-password" />
+				          		<button  class="DK" type="submit" class="signup__signInButton">Submit</button>
+              				</form>
                         </div>
-                        <div class="DK">SUBCRIBE</div>
                     </div>
                 </div>
             </div>

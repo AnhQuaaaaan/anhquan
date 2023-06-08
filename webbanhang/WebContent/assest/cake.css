@@ -9,9 +9,12 @@
     flex: 1.8;
     height: auto;
 }
-a{
+.a{
     text-decoration: none;
     color: black;
+}
+.s{
+	width:800px;
 }
 .about-text{
     font-size: 50px;

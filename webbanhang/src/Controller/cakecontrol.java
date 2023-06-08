@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import DAO.DAO;
+import Model.Comment;
 import Model.product;
 @WebServlet(urlPatterns= {"/cakect"})	
 public class cakecontrol extends HttpServlet {
@@ -20,6 +21,8 @@ public class cakecontrol extends HttpServlet {
 		DAO dao=new DAO();
 		List<product> list=dao.getallproduct();
 		req.setAttribute("listcake", list);
+		List<Comment> list1=dao.getallcomment();
+		req.setAttribute("listcomment", list1);
 		req.getRequestDispatcher("cake.jsp").forward(req, resp);
 	}
 }

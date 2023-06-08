@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="./assest/main.css">
 <link rel="stylesheet" href="./assest/about.css">
 <link rel="stylesheet" href="./assest/cake.css">
+<link rel="stylesheet" href="./assest/comment.css">
 <link rel="stylesheet"
 	href="./font-awesome-4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="./fontawesome-free-6.4.0-web/css/all.css">
@@ -34,7 +35,6 @@
 							Sản phẩm</a>
 						<ul class="sub-menu">
 							<li><a href="cakect">Bánh ngọt</a></li>
-							<li><a href="">Nước uống</a></li>
 							<li><a href="product.jsp">Công thức</a></li>
 						</ul></li>
 					<c:if test="${sessionScope.acc== null }">
@@ -76,7 +76,7 @@
 				</div>
 				<c:forEach items="${listcake}" var="o">
 					<div class="all-list">
-						<a href="/list1.jsp">
+						<a class="s" href="/list1.jsp">
 							<div class="list10">
 								<div class="list1">
 									<img class="list1-img" alt="" src="${o.img}">
@@ -96,7 +96,7 @@
 										</c:if>
 										<c:if test="${sessionScope.acc == null }">
 											<div class="More">
-												<a onclick="need_login()" href="#"> Thêm vào giỏ hàng </a>
+												<a onclick="need_login()" href="login"> Thêm vào giỏ hàng </a>
 											</div>
 										</c:if>
 									</div>
@@ -105,14 +105,12 @@
 						</a>
 					</div>
 				</c:forEach>
-				<div class="CMT">
-					<div class="Log">LEAVE A COMMENT</div>
-					<div class="cmt">
-						<input type="text" id="fname" name="fname" value="Your Comment..."><br>
-						<br>
-					</div>
-					<div class="DK">SUBCRIBE</div>
+				<div class="Log">LIST OF COMMENTS
 				</div>
+                <c:forEach items="${listcomment}" var="o">
+                					<div class="Name2">${o.email}</div>
+                                    <div class="IFM2">${o.comment}</div>
+                </c:forEach>	
 			</div>
 			<div class="main-about2">
 				<div class="about2-img"></div>
@@ -128,12 +126,14 @@
 						and cooking ideas. Let's stay updated!</div>
 					<div id="give">
 						<div id="from">
-							<input type="text" id="fname" name="fname" value="Comment..."><br>
-							<br> <input type="text" id="lname" name="lname"
-								value="Email..."><br>
-							<br>
-						</div>
-						<div class="DK">SUBCRIBE</div>
+                            <form action="commenttc3" method="post">
+				                <h2>Email</h2>
+				                <input name="email" type="text" class="input-signup-username" />
+				                <h2>Comment</h2>
+				                <input name="comment" type="text" class="input-signup-password" />
+				          		<button  class="DK" type="submit" class="signup__signInButton">Submit</button>
+              				</form>
+                        </div>
 					</div>
 				</div>
 			</div>

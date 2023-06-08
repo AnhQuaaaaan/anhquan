@@ -10,6 +10,7 @@ import Controller.ConnectSQL;
 import Model.Account;
 import Model.Cart;
 import Model.product;
+import Model.Comment;
 
 public class DAO {
 	Connection con = null;
@@ -272,5 +273,32 @@ public class DAO {
 			// TODO: handle exception
 		}
 		return i;
+	}
+	public void comment(String email, String comment) {
+		String query = "insert Comment (Email,Comment) values (?,?)";
+		try {
+			con = ConnectSQL.getConnection();
+			ps = con.prepareStatement(query);
+			ps.setString(1, email);
+			ps.setString(2, comment);
+			ps.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	public List<Comment> getallcomment() {
+		List<Comment> list = new ArrayList<>();
+		try {
+			con = ConnectSQL.getConnection();
+			String query = "select * from Comment";	
+			ps = con.prepareStatement(query);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				list.add(new Comment(rs.getString(1), rs.getString(2)));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return list;
 	}
 }
