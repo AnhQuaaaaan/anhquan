@@ -30,7 +30,7 @@ public class addtoCart extends HttpServlet{
 	 
 	   int quantity=1;
 	   Account acc=(Account) session.getAttribute("acc");
-	   Cart cart=daocake.getCartbyName(cake.getName());
+	   Cart cart=daocake.getCartbyEmail(acc.getemail(),cake.getName());
 	   if(cart==null) {
 		   quantity=1;
 	   daocake.addtoCart(cake.getName(), cake.getImg(), quantity,cake.getPrice()*quantity, acc.getemail());
@@ -38,8 +38,7 @@ public class addtoCart extends HttpServlet{
 	   else {
 		   quantity=cart.getQuantity();
 		   quantity=quantity+1;
-		   System.out.println(quantity);
-		   daocake.updateCart(cake.getName(), quantity, cake.getPrice()*(quantity));
+		   daocake.updateCart(cake.getName(), quantity, cake.getPrice()*(quantity),acc.getemail());
 	   }
 	   resp.sendRedirect("cakect");
 	}

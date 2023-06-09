@@ -183,28 +183,63 @@ public class DAO {
 		}
 		return null;
 	}
-	public int updateCart( String name, int quantity,double totalprice) {
+	public product getproductbyname(String name) {
+		try {
+			con = ConnectSQL.getConnection();
+			String query = "select * from product where name=?";
+			ps = con.prepareStatement(query);
+			ps.setString(1, name);
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				product prd = new product(Integer.parseInt(rs.getString(1)), rs.getString(2), rs.getString(3),
+						Double.parseDouble(rs.getString(4)));
+				return prd;
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return null;
+	}
+	public int updateCart( String name, int quantity,double totalprice,String email) {
 		int i = -1;
 		try {
 			con = ConnectSQL.getConnection();
-			String query1 = "update Cart set quantity=?,totalprice=? where name =?";
+			String query1 = "update Cart set quantity=?,totalprice=? where name =? and email=?";
 			ps = con.prepareStatement(query1);
 			ps.setString(3, name);
+			ps.setString(4, email);
 			ps.setInt(1, quantity);
 		    ps.setDouble(2,totalprice);
-		    System.out.println("Cáº­p nháº­t thÃ nh cÃ´ng");
 		 ps.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 		return i;
 	}
-	public Cart getCartbyName(String name) {
+	public Cart getCartbyName(String name,String email) {
 		try {
 			con = ConnectSQL.getConnection();
-			String query = "select * from cart where name=?";
+			String query = "select * from cart where name=? and email=?";
 			ps = con.prepareStatement(query);
 			ps.setString(1, name);
+			ps.setString(2, email);
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				Cart c = new Cart(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getDouble(5), rs.getString(6));
+				return c;
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return null;
+	}
+	public Cart getCartbyEmail(String email , String name) {
+		try {
+			con = ConnectSQL.getConnection();
+			String query = "select * from cart where email=? and name=?";
+			ps = con.prepareStatement(query);
+			ps.setString(1, email);
+			ps.setString(2, name);
 			rs = ps.executeQuery();
 			if (rs.next()) {
 				Cart c = new Cart(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getDouble(5), rs.getString(6));
@@ -261,13 +296,14 @@ public class DAO {
 			e.printStackTrace();
 		}
 	}
-	public int deleteCart(String cart_id) {
+	public int deleteCart(String cart_id,String email) {
 		int i = -1;
 		try {
 			con = ConnectSQL.getConnection();
-			String query = "delete cart where name=?";
+			String query = "delete cart where name=? and email=?";
 			ps = con.prepareStatement(query);
 			ps.setString(1, cart_id);
+			ps.setString(2, email);
 			i = ps.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
