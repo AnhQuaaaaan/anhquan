@@ -58,8 +58,10 @@
 			</div>
 			<div class="box1">
 				<div class="box">
-					<input type="text" placeholder="Search here"> <a><i
-						class="fa-solid fa-magnifying-glass" style="font-size: 30px"></i></a>
+				<form action="search" method="post">
+					<input name="searchhere" type="text" placeholder="Search here"/>
+					<button class="searchbt" type="submit"><i class="fa-solid fa-magnifying-glass" style="font-size: 30px"></i></button>
+				</form>
 				</div>
 			</div>
 		</div>
@@ -109,7 +111,7 @@
 				</div>
                 <c:forEach items="${listcomment}" var="o">
                 					<div class="Name2">${o.email}</div>
-                                    <div class="IFM2">${o.comment}</div>
+                                    <textarea readonly="readonly" class="IFM2">${o.comment}</textarea>
                 </c:forEach>	
 			</div>
 			<div class="main-about2">
@@ -130,7 +132,7 @@
 				                <h2>Email</h2>
 				                <input name="email" type="text" class="input-signup-username" />
 				                <h2>Comment</h2>
-				                <input name="comment" type="text" class="input-signup-password" />
+				                <textarea class="cmtss" name="comment" type="text" class="input-signup-password" ></textarea>
 				          		<button  class="DK" type="submit" class="signup__signInButton">Submit</button>
               				</form>
                         </div>

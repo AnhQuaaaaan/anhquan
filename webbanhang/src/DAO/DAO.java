@@ -337,4 +337,25 @@ public class DAO {
 		}
 		return list;
 	}
+	public List<product> getproductsearch(String name) {
+		List<product> list = new ArrayList<>();
+		try {
+			con = ConnectSQL.getConnection();
+			String query = "select * from product where name like ?";
+			name = "%" + name+"%";
+			ps = con.prepareStatement(query);
+			ps.setString(1, name);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				list.add(new product(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4)));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return list;
+	}
+	public static void main(String[] args) {
+		DAO dao=new DAO();
+		System.out.println(dao.getproductsearch("a"));
+	}
 }
