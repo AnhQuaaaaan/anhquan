@@ -83,7 +83,7 @@
                 
                 <div class="Text">MOST POPULAR</div>
                 <div class="post">
-                    <div class="post1"><div class="Read"><a href="Pet.jsp">READ MORE</a></div></div>
+                    <div class="post1"><div class="Read"><a href="pet.jsp">READ MORE</a></div></div>
                     <div class="post2"><div class="Read"><a href="meal.jsp">READ MORE</a></div></div>
                     <div class="post3"><div class="Read"><a href="trip.jsp">READ MORE</a></div></div>
                 </div>

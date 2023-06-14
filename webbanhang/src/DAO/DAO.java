@@ -354,6 +354,20 @@ public class DAO {
 		}
 		return list;
 	}
+	public int deleteCmt(String email,String cmt) {
+		int i = -1;
+		try {
+			con = ConnectSQL.getConnection();
+			String query = "delete Comment where Email=? and Comment=?";
+			ps = con.prepareStatement(query);
+			ps.setString(1, email);
+			ps.setString(2, cmt);
+			i = ps.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return i;
+	}
 	public static void main(String[] args) {
 		DAO dao=new DAO();
 		System.out.println(dao.getproductsearch("a"));

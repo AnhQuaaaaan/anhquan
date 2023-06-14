@@ -84,7 +84,7 @@
 									<img class="list1-img" alt="" src="${o.img}">
 									<div class="list-content">
 										<div class="Name">${o.name}</div>
-										<div class="Date">${o.price}$</div>
+										<div class="Date">${o.price}</div>
 										<div class="IFM">Bánh có các lớp bơ chảy mềm mại, cực kì
 											ngon miệng, ngoài ra một số tiệm bánh còn làm thêm phần nhân
 											phô mai quyến rũ. Nếu chưa từng thử món này, bạn nhất định
@@ -110,8 +110,14 @@
 				<div class="Log">LIST OF COMMENTS
 				</div>
                 <c:forEach items="${listcomment}" var="o">
-                					<div class="Name2">${o.email}</div>
+                <c:if test="${sessionScope.acc!= null }">
+                					<div class="Name2">${o.email} <a class="delete" href="dltcmt?pcmt=${o.comment}"><i class="fa fa-trash" aria-hidden="true"></i></a></div>
                                     <textarea readonly="readonly" class="IFM2">${o.comment}</textarea>
+                </c:if>
+                <c:if test="${sessionScope.acc== null }">
+                					<div class="Name2">${o.email} <a class="delete" href="log.jsp"><i class="fa fa-trash" aria-hidden="true"></i></a></div>
+                                    <textarea readonly="readonly" class="IFM2">${o.comment}</textarea>
+                </c:if>            
                 </c:forEach>	
 			</div>
 			<div class="main-about2">

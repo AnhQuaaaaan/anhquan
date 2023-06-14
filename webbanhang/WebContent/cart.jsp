@@ -78,6 +78,7 @@
 						</tr>
 					</thead>
 					<tbody>
+					<div id="tang"></div>
 						<c:forEach items="${listcartt}" var="o">
 							<tr>
 								<td>
@@ -87,7 +88,7 @@
 								<td>${o.name}</td>
 								<td><img width="200px" height="250px" src="${o.img}">
 								</td>
-								<td>${o.quantity}cái</td>
+								<td>${o.quantity} cái</td>
 								<td class="tg">
 									 <div class="More-1">
                                             <div class="More-2"><a href="tangcart?product_name=${o.name }"><i class="fa-solid fa-plus" style="font-size: 25px;"></i></a></div>
@@ -95,7 +96,7 @@
                                         </div>
 								</td>
 								<td>
-									<center>${o.totalprice} $</center>
+									<center>${o.totalprice}</center>
 								</td>
 								<td><font color="red" size="12"> <a
 										onclick="unknow()" href="canceloder?cart_id=${o.name}"
@@ -146,5 +147,6 @@
 					</div>
 				</div>
 			</div>
+			
 </body>
 </html>
